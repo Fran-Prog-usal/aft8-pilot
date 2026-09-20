@@ -6,9 +6,9 @@ El alcance científico es un estudio instrumental de tres dimensiones de AFT8 so
 
 ## Estado del proyecto
 
-El paquete incluye métricas, corpus verificable, controles, extractor Mistral, validación de resultados y análisis con figuras. La integración del extractor se ha probado con un modelo diminuto en CPU; su ejecución científica en GPU sigue pendiente. Las decisiones metodológicas abiertas se documentan expresamente. La preparación de la ejecución se describe en [RunPod](docs/runpod.md).
+El paquete incluye métricas, corpus verificable, controles, extractor Mistral, validación de resultados y análisis con figuras. La extracción en una NVIDIA A40 está verificada para 30 originales, 60 controles y el smoke A001/A013. La [validación de la ejecución](docs/validacion_runpod.md) identifica el paquete, las comprobaciones y sus límites. Las decisiones metodológicas abiertas se documentan expresamente. La preparación de la ejecución se describe en [RunPod](docs/runpod.md).
 
-No se distribuyen resultados científicos con esta base. La ejecución completa y el entorno fijado se incorporarán tras completar la validación de datos y de los módulos de análisis.
+Los resultados y el Excel se distribuyen por separado del código. Su publicación como artefactos descargables sigue pendiente; las rutas locales no sustituyen esa distribución.
 
 ## Instalación de desarrollo
 

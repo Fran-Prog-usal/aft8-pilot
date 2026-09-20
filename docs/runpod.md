@@ -8,7 +8,7 @@ La integración completa por texto se ha probado con un Mistral diminuto de peso
 
 Se ha comprobado por separado el tokenizador auténtico de la revisión fijada: decode exacto e igualdad de IDs y offsets con los artefactos archivados en los 90 textos. No se han descargado aquí los pesos de 7B ni ejecutado una extracción CUDA.
 
-El entorno objetivo reproduce las versiones principales registradas en la extracción de referencia: Python 3.12, PyTorch 2.8.0/CUDA 12.8, Transformers 5.17.0 y NumPy 2.1.2. Las versiones auxiliares están fijadas en `requirements/runpod.txt`. Su instalación conjunta en Linux y la extracción GPU siguen pendientes. No es todavía un lock transitivo validado; cada ejecución guardará `pip freeze`. Si la resolución de dependencias falla, conservar el error y revisar el entorno, sin cambiar versiones silenciosamente.
+La ejecución recibida acredita extracción completa en Linux con Python 3.12.3, PyTorch 2.8.0/CUDA 12.8, Transformers 5.17.0 y NumPy 2.1.2 sobre una NVIDIA A40. Las versiones auxiliares están fijadas en `requirements/runpod.txt`; el paquete conserva `pip freeze`. Esto documenta un entorno ejecutado, aunque el archivo de requisitos no es un lock transitivo. Véase [la validación del paquete](validacion_runpod.md). Si otra instalación falla, conservar el error y revisar el entorno, sin cambiar versiones silenciosamente.
 
 ## Preparación y ejecución
 

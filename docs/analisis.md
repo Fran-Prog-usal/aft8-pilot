@@ -43,7 +43,7 @@ GxA dispone de resumen de 30 textos y del subconjunto de 12 con hipótesis expl�
 
 Los cocientes de resolución y fracciones de techo aparecen separados. La sensibilidad a normalización aplica transformaciones afines después de agregar por verso, con parámetros ajustados sobre todos los tokens no especiales finitos de cada métrica: desviación típica muestral y escala robusta 1,4826·MAD. No equivale a normalizar tokens antes de sumarlos; en ΔE esa operación puede cambiar los máximos por la distinta cantidad de tokens de cada verso.
 
-El clustering es descriptivo, con HDBSCAN de scikit-learn y PCA explícitos. Se conservan las etiquetas archivadas y una comparación de particiones; el recálculo local no las reproduce exactamente. No se reutiliza el p de permutación por columnas, pues la independencia temporal de tokens no está justificada. Su inclusión final en la memoria y la explicación de la diferencia de particiones quedan pendientes; ninguna de las dos versiones identifica categorías emocionales.
+El clustering es descriptivo, con HDBSCAN de scikit-learn y PCA explícitos. Se conservan las etiquetas archivadas y una comparación de particiones; el recálculo local no las reproduce exactamente. No se reutiliza el p de permutación por columnas, pues la independencia temporal de tokens no está justificada. La memoria presenta el recálculo local como descripción y declara la discrepancia, cuya causa sigue sin atribuirse. Ninguna de las dos versiones identifica categorías emocionales.
 
 Falta enlazar todas las cifras y figuras elegidas con la memoria, confirmar las anotaciones y fijar el entorno final. La estabilidad numérica GPU y un control de sensibilidad semántica específica no pueden deducirse de estos diagnósticos.
 

@@ -27,7 +27,7 @@ Se han regenerado las agregaciones de los 30 originales y los 60 controles con t
 
 La agregación excluye tokens especiales, incluye saltos de línea y conserva el signo de ΔE. La masa por verso promedia la saliencia recibida sobre todas las consultas definidas; la masa asignada a posiciones especiales no se redistribuye a los versos. Ambos soportes GxA se comprueban por separado.
 
-Los offsets cubren todos los caracteres de los 90 textos y coinciden con la asignación por máximo solapamiento y la regla de salto de línea. Esto verifica los offsets guardados frente al corpus; no equivale a decodificar los IDs con el tokenizador exacto. Esa comprobación independiente sigue pendiente, pues no se dispone aquí de una copia local del tokenizador verificado.
+Los offsets cubren todos los caracteres de los 90 textos y coinciden con la asignación por máximo solapamiento y la regla de salto de línea. Además, el tokenizador de la revisión fijada reproduce exactamente el texto, los IDs y los offsets. Esta comprobación también pasa para el paquete de la [extracción limpia en RunPod](validacion_runpod.md), incluidos sus dos textos de smoke.
 
 El resultado satisfactorio de estas comprobaciones no valida las conclusiones estadísticas ni resuelve la elección metodológica del soporte GxA. La discrepancia del smoke A001/A002 frente a A001/A013 sigue abierta.
 

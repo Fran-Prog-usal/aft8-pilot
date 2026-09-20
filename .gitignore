@@ -46,3 +46,8 @@ Thumbs.db
 *.tmp
 .idea/
 .vscode/
+
+# Material personal de preparación y copia de trabajo de la memoria.
+/memoria/GUION_VIDEO_5_MINUTOS.md
+/memoria/ESTADO_ENTREGA.md
+/memoria/TFM_memoria_revisada.pdf

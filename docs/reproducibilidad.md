@@ -1,6 +1,6 @@
 # Reproducción del experimento
 
-La reproducción científica requiere un paquete completo de código, configuración, datos y artefactos. La instalación de desarrollo disponible no acredita todavía la reproducción del piloto completo.
+La reproducción científica requiere un paquete completo de código, configuración, datos y artefactos. La [ejecución verificada en A40](validacion_runpod.md) reproduce los 3.240 arrays numéricos comunes de los 90 textos respecto al paquete de referencia. Esta evidencia se limita a las condiciones registradas; no implica igualdad entre hardware distinto ni validez de las hipótesis científicas.
 
 ## Contenido requerido para una versión de resultados
 

@@ -1,0 +1,35 @@
+{
+  "total_pages": 19,
+  "cover_pages": 1,
+  "contents_pages": 1,
+  "body_including_bibliography": 17,
+  "limit": 20,
+  "within_limit": true,
+  "font": "Arial",
+  "body_font_pt": 11,
+  "leading_pt": 14.3,
+  "margins_mm": {
+    "left": 24,
+    "right": 24,
+    "top": 23,
+    "bottom": 22
+  },
+  "section_pages": {
+    "Resumen ejecutivo": 1,
+    "1. Contexto, necesidad y aportación individual": 2,
+    "2. Objetivos y alcance": 2,
+    "3. Solución técnica y flujo de datos": 3,
+    "4. Corpus y diseño de controles": 4,
+    "5. Qué se mide": 6,
+    "6. Estrategia de evaluación estadística": 7,
+    "7. Resultados del piloto": 8,
+    "8. GxA: mapas, objetivos y transferencias": 10,
+    "9. Verificación, ejecución y reproducibilidad": 12,
+    "10. Discusión, límites y decisiones abiertas": 14,
+    "11. Conclusiones y utilidad para AFT8-15": 14,
+    "12. Relación con los contenidos del máster": 15,
+    "Bibliografía": 17
+  },
+  "source_sha256": "3d847ecd5d6e95fa6e24c72810118f0537f09e2d2371172152b16f7861182fa7",
+  "pdf_sha256": "439fdf0241dd7c304e576cf4d027531c2370a86dace44a5e1dd6f8cb957e39da"
+}
