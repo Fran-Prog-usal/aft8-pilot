@@ -1,0 +1,848 @@
+{
+  "schema_version": 1,
+  "description": "Permutaciones realizadas en los controles del experimento; índices de verso basados en 1.",
+  "source_sha256": "2c43040622e08fe9b251226a4d8c5166adb9e89b4e6dadda4d3cea103d24967b",
+  "generation_seed": 20260907,
+  "records": [
+    {
+      "record_id": "A001D1",
+      "source_record_id": "A001",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A001D2",
+      "source_record_id": "A001",
+      "variant": "D2",
+      "permutation": [
+        3,
+        6,
+        5,
+        2,
+        4,
+        1
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A002D1",
+      "source_record_id": "A002",
+      "variant": "D1",
+      "permutation": [
+        1,
+        5,
+        3,
+        4,
+        2,
+        6
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A002D2",
+      "source_record_id": "A002",
+      "variant": "D2",
+      "permutation": [
+        6,
+        5,
+        2,
+        3,
+        1,
+        4
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A003D1",
+      "source_record_id": "A003",
+      "variant": "D1",
+      "permutation": [
+        1,
+        5,
+        3,
+        4,
+        2,
+        6
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A003D2",
+      "source_record_id": "A003",
+      "variant": "D2",
+      "permutation": [
+        2,
+        5,
+        6,
+        1,
+        3,
+        4
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A004D1",
+      "source_record_id": "A004",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A004D2",
+      "source_record_id": "A004",
+      "variant": "D2",
+      "permutation": [
+        6,
+        1,
+        4,
+        2,
+        3,
+        5
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A005D1",
+      "source_record_id": "A005",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        5,
+        4,
+        3,
+        6
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A005D2",
+      "source_record_id": "A005",
+      "variant": "D2",
+      "permutation": [
+        5,
+        6,
+        4,
+        1,
+        3,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A006D1",
+      "source_record_id": "A006",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A006D2",
+      "source_record_id": "A006",
+      "variant": "D2",
+      "permutation": [
+        6,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A007D1",
+      "source_record_id": "A007",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A007D2",
+      "source_record_id": "A007",
+      "variant": "D2",
+      "permutation": [
+        5,
+        4,
+        6,
+        1,
+        2,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A008D1",
+      "source_record_id": "A008",
+      "variant": "D1",
+      "permutation": [
+        1,
+        5,
+        3,
+        4,
+        2,
+        6
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A008D2",
+      "source_record_id": "A008",
+      "variant": "D2",
+      "permutation": [
+        6,
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A009D1",
+      "source_record_id": "A009",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A009D2",
+      "source_record_id": "A009",
+      "variant": "D2",
+      "permutation": [
+        3,
+        6,
+        1,
+        5,
+        2,
+        4
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A010D1",
+      "source_record_id": "A010",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A010D2",
+      "source_record_id": "A010",
+      "variant": "D2",
+      "permutation": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A011D1",
+      "source_record_id": "A011",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        6,
+        4,
+        5,
+        3
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A011D2",
+      "source_record_id": "A011",
+      "variant": "D2",
+      "permutation": [
+        2,
+        5,
+        1,
+        6,
+        4,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A012D1",
+      "source_record_id": "A012",
+      "variant": "D1",
+      "permutation": [
+        1,
+        5,
+        3,
+        4,
+        2,
+        6
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A012D2",
+      "source_record_id": "A012",
+      "variant": "D2",
+      "permutation": [
+        4,
+        6,
+        2,
+        5,
+        1,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A013D1",
+      "source_record_id": "A013",
+      "variant": "D1",
+      "permutation": [
+        1,
+        5,
+        3,
+        4,
+        2,
+        6
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A013D2",
+      "source_record_id": "A013",
+      "variant": "D2",
+      "permutation": [
+        2,
+        5,
+        6,
+        3,
+        4,
+        1
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A014D1",
+      "source_record_id": "A014",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A014D2",
+      "source_record_id": "A014",
+      "variant": "D2",
+      "permutation": [
+        5,
+        1,
+        4,
+        3,
+        6,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A015D1",
+      "source_record_id": "A015",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A015D2",
+      "source_record_id": "A015",
+      "variant": "D2",
+      "permutation": [
+        4,
+        3,
+        5,
+        1,
+        6,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A016D1",
+      "source_record_id": "A016",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        5,
+        4,
+        3,
+        6
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A016D2",
+      "source_record_id": "A016",
+      "variant": "D2",
+      "permutation": [
+        4,
+        3,
+        6,
+        2,
+        1,
+        5
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A017D1",
+      "source_record_id": "A017",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        5,
+        4,
+        3,
+        6
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A017D2",
+      "source_record_id": "A017",
+      "variant": "D2",
+      "permutation": [
+        6,
+        1,
+        5,
+        2,
+        4,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A018D1",
+      "source_record_id": "A018",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A018D2",
+      "source_record_id": "A018",
+      "variant": "D2",
+      "permutation": [
+        4,
+        6,
+        5,
+        1,
+        2,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A019D1",
+      "source_record_id": "A019",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        5,
+        4,
+        3,
+        6
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A019D2",
+      "source_record_id": "A019",
+      "variant": "D2",
+      "permutation": [
+        2,
+        6,
+        5,
+        1,
+        3,
+        4
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A020D1",
+      "source_record_id": "A020",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        6,
+        4,
+        5,
+        3
+      ],
+      "expected_verse": 3
+    },
+    {
+      "record_id": "A020D2",
+      "source_record_id": "A020",
+      "variant": "D2",
+      "permutation": [
+        4,
+        6,
+        1,
+        5,
+        3,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A021D1",
+      "source_record_id": "A021",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A021D2",
+      "source_record_id": "A021",
+      "variant": "D2",
+      "permutation": [
+        4,
+        3,
+        2,
+        5,
+        6,
+        1
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A022D1",
+      "source_record_id": "A022",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A022D2",
+      "source_record_id": "A022",
+      "variant": "D2",
+      "permutation": [
+        5,
+        4,
+        6,
+        3,
+        1,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A023D1",
+      "source_record_id": "A023",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 6
+    },
+    {
+      "record_id": "A023D2",
+      "source_record_id": "A023",
+      "variant": "D2",
+      "permutation": [
+        4,
+        1,
+        6,
+        3,
+        2,
+        5
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A024D1",
+      "source_record_id": "A024",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A024D2",
+      "source_record_id": "A024",
+      "variant": "D2",
+      "permutation": [
+        6,
+        5,
+        2,
+        1,
+        3,
+        4
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A025D1",
+      "source_record_id": "A025",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A025D2",
+      "source_record_id": "A025",
+      "variant": "D2",
+      "permutation": [
+        6,
+        3,
+        2,
+        1,
+        4,
+        5
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A026D1",
+      "source_record_id": "A026",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A026D2",
+      "source_record_id": "A026",
+      "variant": "D2",
+      "permutation": [
+        3,
+        5,
+        4,
+        2,
+        6,
+        1
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A027D1",
+      "source_record_id": "A027",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A027D2",
+      "source_record_id": "A027",
+      "variant": "D2",
+      "permutation": [
+        2,
+        1,
+        5,
+        6,
+        4,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A028D1",
+      "source_record_id": "A028",
+      "variant": "D1",
+      "permutation": [
+        1,
+        6,
+        3,
+        4,
+        5,
+        2
+      ],
+      "expected_verse": 2
+    },
+    {
+      "record_id": "A028D2",
+      "source_record_id": "A028",
+      "variant": "D2",
+      "permutation": [
+        5,
+        3,
+        6,
+        1,
+        4,
+        2
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A029D1",
+      "source_record_id": "A029",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        5
+      ],
+      "expected_verse": 5
+    },
+    {
+      "record_id": "A029D2",
+      "source_record_id": "A029",
+      "variant": "D2",
+      "permutation": [
+        6,
+        1,
+        2,
+        5,
+        4,
+        3
+      ],
+      "expected_verse": null
+    },
+    {
+      "record_id": "A030D1",
+      "source_record_id": "A030",
+      "variant": "D1",
+      "permutation": [
+        1,
+        2,
+        3,
+        6,
+        5,
+        4
+      ],
+      "expected_verse": 4
+    },
+    {
+      "record_id": "A030D2",
+      "source_record_id": "A030",
+      "variant": "D2",
+      "permutation": [
+        5,
+        1,
+        6,
+        2,
+        3,
+        4
+      ],
+      "expected_verse": null
+    }
+  ]
+}

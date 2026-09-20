@@ -1,0 +1,48 @@
+# Entornos y archivos generados por Python.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Modelos y resultados de ejecución se distribuyen como artefactos verificados.
+models/
+outputs/
+*.safetensors
+*.npz
+*.parquet
+*.tar.gz
+*.zip
+
+# Los datos originales requieren una política de distribución explícita.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Configuración local y credenciales.
+.env
+.env.*
+!.env.example
+*.token
+*.pat
+*token*.txt
+*.pem
+*.key
+*.log
+*credentials*
+*secret*
+
+# Archivos temporales de editores y sistema.
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
+.idea/
+.vscode/

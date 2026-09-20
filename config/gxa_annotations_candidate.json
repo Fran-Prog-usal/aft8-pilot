@@ -1,0 +1,294 @@
+{
+  "version": "candidate-1",
+  "analysis_status": "exploratory",
+  "source_sha256": "3bf9522875c8dc3b52541ebfb2045f00452ee4f5cb2f8b22e8138cdcae24f9de",
+  "records": [
+    {
+      "record_id": "A001",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A002",
+      "type": "foco",
+      "source": null,
+      "target": "mi nombre",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A003",
+      "type": "foco",
+      "source": null,
+      "target": "mañana",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A004",
+      "type": "transferencia",
+      "source": "corazón",
+      "target": "pared",
+      "gxa_verse": null,
+      "manual_resolution": true,
+      "review_status": "pending"
+    },
+    {
+      "record_id": "A005",
+      "type": "foco",
+      "source": null,
+      "target": "quedé",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A006",
+      "type": "foco",
+      "source": null,
+      "target": "preguntó",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A007",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A008",
+      "type": "foco",
+      "source": null,
+      "target": "carta",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A009",
+      "type": "foco",
+      "source": null,
+      "target": "nombre",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A010",
+      "type": "excluido",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": true,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A011",
+      "type": "foco",
+      "source": null,
+      "target": "sí",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A012",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A013",
+      "type": "transferencia",
+      "source": "madre",
+      "target": "cuchillo",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A014",
+      "type": "transferencia",
+      "source": "columpio",
+      "target": "zapato",
+      "gxa_verse": 4,
+      "manual_resolution": true,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A015",
+      "type": "transferencia",
+      "source": "pan",
+      "target": "sirena",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A016",
+      "type": "transferencia",
+      "source": "pantalla",
+      "target": "mano",
+      "gxa_verse": 5,
+      "manual_resolution": true,
+      "review_status": "pending"
+    },
+    {
+      "record_id": "A017",
+      "type": "foco",
+      "source": null,
+      "target": "puerta",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A018",
+      "type": "transferencia",
+      "source": "pantalla",
+      "target": "respira",
+      "gxa_verse": 5,
+      "manual_resolution": true,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A019",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A020",
+      "type": "foco",
+      "source": null,
+      "target": "devolver",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A021",
+      "type": "foco",
+      "source": null,
+      "target": "nunca",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A022",
+      "type": "foco",
+      "source": null,
+      "target": "frontera",
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A023",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A024",
+      "type": "sin_objetivo",
+      "source": null,
+      "target": null,
+      "gxa_verse": null,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A025",
+      "type": "foco",
+      "source": null,
+      "target": "teléfono",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A026",
+      "type": "foco",
+      "source": null,
+      "target": "espejo",
+      "gxa_verse": 4,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A027",
+      "type": "foco",
+      "source": null,
+      "target": "vaso",
+      "gxa_verse": 4,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A028",
+      "type": "transferencia",
+      "source": "paloma",
+      "target": "papel",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A029",
+      "type": "foco",
+      "source": null,
+      "target": "punto",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    },
+    {
+      "record_id": "A030",
+      "type": "foco",
+      "source": null,
+      "target": "zapatos",
+      "gxa_verse": 5,
+      "manual_resolution": false,
+      "review_status": "imported_not_revalidated"
+    }
+  ],
+  "pending_decisions": {
+    "A004": {
+      "source_candidates": [
+        "corazón",
+        "pecho",
+        "mano"
+      ],
+      "target": "pared",
+      "note": "La hipótesis menciona cuerpo; la selección del origen modifica el resultado de caída frente al control."
+    },
+    "A016": {
+      "hypothesis_source": "monitor",
+      "candidate_source": "pantalla",
+      "target": "mano",
+      "note": "Monitor no aparece literalmente. Pantalla se propone como referente anterior al destino; requiere confirmación."
+    }
+  }
+}

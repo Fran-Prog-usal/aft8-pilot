@@ -1,0 +1,49 @@
+{
+  "version": "archived-transfers",
+  "analysis_status": "exploratory",
+  "source_sha256": "75d14a6fd528966ee5aba1b646efd54de60ed3b56bfda43e1aed8a213dc3f0b0",
+  "records": [
+    {
+      "record_id": "A004",
+      "source": "cuerpo",
+      "target": "pared",
+      "estado": "palabra no localizada en el texto"
+    },
+    {
+      "record_id": "A013",
+      "source": "madre",
+      "target": "cuchillo",
+      "estado": "calculado"
+    },
+    {
+      "record_id": "A014",
+      "source": "columpio",
+      "target": "zapato",
+      "estado": "calculado"
+    },
+    {
+      "record_id": "A015",
+      "source": "pan",
+      "target": "sirena",
+      "estado": "calculado"
+    },
+    {
+      "record_id": "A016",
+      "source": "monitor",
+      "target": "mano",
+      "estado": "palabra no localizada en el texto"
+    },
+    {
+      "record_id": "A018",
+      "source": "pantalla",
+      "target": "respira",
+      "estado": "calculado"
+    },
+    {
+      "record_id": "A028",
+      "source": "paloma",
+      "target": "papel",
+      "estado": "calculado"
+    }
+  ]
+}

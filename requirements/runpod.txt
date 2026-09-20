@@ -1,0 +1,11 @@
+# Entorno objetivo de extracción; la resolución completa se registra con pip freeze.
+torch==2.8.0
+transformers==5.17.0
+numpy==2.1.2
+tokenizers==0.23.1
+safetensors==0.8.0
+sentencepiece==0.2.2
+huggingface-hub==1.29.0
+pandas==3.0.5
+pyarrow==25.0.1
+openpyxl==3.1.5
