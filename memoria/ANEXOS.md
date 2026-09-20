@@ -22,7 +22,7 @@ La autorización para difundir el material de AFT8-15 ha sido confirmada por el 
 
 ## C. Correspondencia entre memoria y resultados
 
-Las rutas de esta tabla son salidas del análisis del paquete con SHA-256 `1b8cdbe8ed7b83815fc61751ed6446266ffe3989e463604da76a3130e226087b`. Los comandos para generarlas están en el anexo A. Los resultados ignorados por Git deberán entregarse como artefactos adicionales: una ruta de esta tabla no implica que ya exista una descarga pública.
+Las rutas de esta tabla son salidas del análisis del paquete con SHA-256 `1b8cdbe8ed7b83815fc61751ed6446266ffe3989e463604da76a3130e226087b`. La [release de reproducción](https://github.com/Fran-Prog-usal/aft8-pilot/releases/tag/v0.1.1-reproducible) distribuye el paquete, el Excel autorizado, el código ejecutado y `analysis-evidence.zip`, que conserva las carpetas `outputs/analysis_runpod`, `outputs/diagnostics_runpod` y `outputs/validation_runpod`. Los hashes están en `config/release_assets.json`. El script `scripts/reproduce.py` regenera las tablas en un destino nuevo, `outputs/reproduction`, sin sobrescribir esta evidencia.
 
 | Apartado | Evidencia relativa a la raíz del repositorio |
 |---|---|

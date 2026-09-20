@@ -21,4 +21,4 @@ Cada ejecución tendrá un identificador único y un manifiesto. Los resultados 
 - **Repetición del análisis:** produce las mismas tablas a partir de los mismos datos guardados.
 - **Repetición de extracción:** compara métricas bajo condiciones registradas y tolerancias predefinidas.
 
-La igualdad de tablas numéricas no implica identidad binaria de archivos comprimidos o contenedores con metadatos variables. Las tolerancias y el criterio de aceptación deberán fijarse antes de la repetición. No se afirmará reproducibilidad completa hasta terminar estas comprobaciones.
+La igualdad de tablas numéricas no implica identidad binaria de archivos comprimidos o contenedores con metadatos variables. La instalación nueva en Windows/Python 3.11 reproduce las 23 tablas CSV en bytes; dependencias completas en `requirements/analysis-windows.lock.txt`, instrucciones en el README y alcance en [la revisión técnica](revision_tecnica.md). No se extiende ese resultado a otros sistemas ni a una extracción 7B nueva en GPU.

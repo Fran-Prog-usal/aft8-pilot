@@ -1,17 +1,19 @@
 """Lectura de resultados de Mistral con verificación de contenido y sin pickle."""
+
 from __future__ import annotations
 
 import hashlib
 import io
 import json
-from pathlib import Path, PurePosixPath
 import tarfile
 import tempfile
+from pathlib import Path, PurePosixPath
 
 import numpy as np
 import pandas as pd
 
-ARCHIVE_SHA256 = "2656d5c571da2a86102537ccf0a07301234367d1efb69134e9d668769c32418c"
+ARCHIVE_SHA256 = "1b8cdbe8ed7b83815fc61751ed6446266ffe3989e463604da76a3130e226087b"
+REFERENCE_ARCHIVE_SHA256 = "2656d5c571da2a86102537ccf0a07301234367d1efb69134e9d668769c32418c"
 RUNS = {
     "original": "results/pilot30_aft8_v1__mistral",
     "control": "results/pilot30_aft8_D_v1__mistral",
@@ -41,9 +43,14 @@ class ResultArchive:
                     for member in archive:
                         name = member.name
                         parts = PurePosixPath(name)
-                        if (name in seen or parts.is_absolute() or ".." in parts.parts
-                                or "\\" in name or ":" in name
-                                or not (member.isfile() or member.isdir())):
+                        if (
+                            name in seen
+                            or parts.is_absolute()
+                            or ".." in parts.parts
+                            or "\\" in name
+                            or ":" in name
+                            or not (member.isfile() or member.isdir())
+                        ):
                             raise ValueError(f"Miembro de archivo no admitido: {name}")
                         seen.add(name)
                         if not member.isfile():
@@ -59,8 +66,9 @@ class ResultArchive:
                         if length != member.size:
                             raise ValueError(f"Miembro truncado: {name}")
                         self._index[name] = offset, length
-                        self.inventory.append({"path": name, "bytes": length,
-                                               "sha256": digest.hexdigest()})
+                        self.inventory.append(
+                            {"path": name, "bytes": length, "sha256": digest.hexdigest()}
+                        )
             self.sha256 = actual
         except BaseException:
             self.close()
@@ -90,7 +98,8 @@ class ResultArchive:
         return json.loads(self.read(run, "run_manifest.json"))
 
     def vectors(self, run: str, record_id: str) -> dict[str, np.ndarray]:
-        with np.load(io.BytesIO(self.read(run, f"gxa_vectors/{record_id}.npz")),
-                     allow_pickle=False) as data:
+        with np.load(
+            io.BytesIO(self.read(run, f"gxa_vectors/{record_id}.npz")), allow_pickle=False
+        ) as data:
             # El texto de los tokens se obtiene de token_metrics.parquet.
             return {key: data[key] for key in data.files if key != "tokens"}

@@ -1,12 +1,13 @@
 """Reproduce los controles a partir de las permutaciones fijadas del experimento."""
+
 from __future__ import annotations
 
 import argparse
-from collections import Counter
 import hashlib
 import json
-from pathlib import Path
 import re
+from collections import Counter
+from pathlib import Path
 
 
 def build_controls(corpus: list[dict], design: list[dict]) -> list[dict]:
@@ -34,17 +35,31 @@ def build_controls(corpus: list[dict], design: list[dict]) -> list[dict]:
         moved = sum(old != new for new, old in enumerate(permutation, start=1))
         target = item["expected_verse"]
         if variant == "D1":
-            if moved != 2 or target == original_target or not isinstance(target, int) or not 2 <= target <= 6 or permutation[target - 1] != original_target:
+            if (
+                moved != 2
+                or target == original_target
+                or not isinstance(target, int)
+                or not 2 <= target <= 6
+                or permutation[target - 1] != original_target
+            ):
                 raise ValueError(f"Transposición u objetivo inválido: {identifier}")
         elif moved != len(verses) or target is not None:
             raise ValueError(f"Desarreglo u objetivo inválido: {identifier}")
         text = "\n".join(verses[index - 1] for index in permutation)
-        result.append({"record_id": identifier, "source_record_id": source["record_id"],
-                       "variant": variant, "design_family": source["design_family"],
-                       "target_dimensions": source["target_dimensions"],
-                       "permutation": permutation, "expected_verse": target,
-                       "original_expected_verse": original_target,
-                       "text_content": text, "text_sha256": hashlib.sha256(text.encode()).hexdigest()})
+        result.append(
+            {
+                "record_id": identifier,
+                "source_record_id": source["record_id"],
+                "variant": variant,
+                "design_family": source["design_family"],
+                "target_dimensions": source["target_dimensions"],
+                "permutation": permutation,
+                "expected_verse": target,
+                "original_expected_verse": original_target,
+                "text_content": text,
+                "text_sha256": hashlib.sha256(text.encode()).hexdigest(),
+            }
+        )
     expected = {identifier + variant for identifier in base for variant in ("D1", "D2")}
     if seen != expected:
         raise ValueError("Faltan controles D1 o D2 para algún original.")

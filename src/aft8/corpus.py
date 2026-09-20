@@ -1,4 +1,5 @@
 """Importación verificable del corpus y sus hipótesis desde el libro de referencia."""
+
 from __future__ import annotations
 
 import argparse
@@ -7,13 +8,19 @@ import io
 import json
 from pathlib import Path
 
-
 SOURCE_SHA256 = "7dc1af0a69226ee03d92d8eb7a930f53f7fcc67f6ec956ebea10e11e87f6816c"
 FIELDS = (
-    "record_id", "title", "design_family", "target_dimensions",
-    "preregistered_hypothesis", "expected_transition_span",
-    "expected_delta_p", "expected_delta_e", "expected_gxa",
-    "text_content", "text_sha256",
+    "record_id",
+    "title",
+    "design_family",
+    "target_dimensions",
+    "preregistered_hypothesis",
+    "expected_transition_span",
+    "expected_delta_p",
+    "expected_delta_e",
+    "expected_gxa",
+    "text_content",
+    "text_sha256",
 )
 
 
@@ -66,7 +73,9 @@ def main() -> None:
     payload = "".join(json.dumps(record, ensure_ascii=False) + "\n" for record in records)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_bytes(payload.encode("utf-8"))
-    print(f"{len(records)} registros; SHA-256: {hashlib.sha256(payload.encode('utf-8')).hexdigest()}")
+    print(
+        f"{len(records)} registros; SHA-256: {hashlib.sha256(payload.encode('utf-8')).hexdigest()}"
+    )
 
 
 def prepare_input():
@@ -76,7 +85,14 @@ def prepare_input():
     parser.add_argument("output", type=Path)
     args = parser.parse_args()
     records = [json.loads(line) for line in args.corpus.read_text(encoding="utf-8").splitlines()]
-    payload = "".join(json.dumps({key: record[key] for key in ("record_id", "text_content", "text_sha256")}, ensure_ascii=False) + "\n" for record in records)
+    payload = "".join(
+        json.dumps(
+            {key: record[key] for key in ("record_id", "text_content", "text_sha256")},
+            ensure_ascii=False,
+        )
+        + "\n"
+        for record in records
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_bytes(payload.encode("utf-8"))
     print(f"{len(records)} entradas sin hipótesis")

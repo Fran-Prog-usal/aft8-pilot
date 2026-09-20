@@ -268,7 +268,7 @@ Los hashes del código ejecutado permiten identificarlo aun cuando un contenedor
 
 La reproducción tiene varias capas. El hash del archivo verifica que se ha recibido el mismo paquete. La validación interna relaciona tablas, matrices, identificadores y agregaciones. El análisis vuelve a producir estadísticas a partir de esas mediciones. Finalmente, repetir la extracción permite comparar otra ejecución del modelo bajo condiciones registradas. Estas capas responden a preguntas diferentes y conviene indicar cuál se ha comprobado en cada caso.
 
-Un tercero puede empezar por el análisis local sin alquilar una GPU: necesita el corpus autorizado, los artefactos y el entorno de análisis. La extracción completa requiere además los pesos y el entorno CUDA. Los anexos relacionan cada resultado de la memoria con su tabla de origen para que la revisión no dependa de aceptar una cifra transcrita manualmente. Quedan por completar la distribución efectiva de los artefactos y la comprobación de instalación independiente como parte de la entrega del repositorio.
+Un tercero puede empezar por el análisis local sin alquilar una GPU: la release del repositorio distribuye el Excel autorizado, los artefactos y el código ejecutado, con hashes verificables. Una instalación nueva en Windows y Python 3.11 reproduce las 23 tablas CSV en bytes; las dependencias están fijadas y los anexos detallan el procedimiento. La extracción completa requiere además los pesos y el entorno CUDA. Esta comprobación no equivale a una nueva extracción 7B en GPU ni garantiza igualdad entre dispositivos.
 
 ## 10. Discusión, límites y decisiones abiertas
 

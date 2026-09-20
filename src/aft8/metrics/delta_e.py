@@ -4,6 +4,7 @@ Un incremento de entropía indica mayor dispersión de la distribución
 predictiva. La interpretación describe incertidumbre probabilística y
 no atribuye estados emocionales al modelo.
 """
+
 from __future__ import annotations
 
 import numpy as np

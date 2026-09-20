@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aft8-pilot"
-version = "0.1.0"
+version = "0.1.1"
 description = "Instrumentación y análisis del piloto AFT8 sobre modelos de lenguaje"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -14,6 +14,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+dev = ["ruff==0.16.8"]
 data = ["openpyxl>=3.1,<4"]
 analysis = ["pandas>=2.2,<4", "pyarrow>=18,<26", "scipy>=1.13,<2", "scikit-learn>=1.5,<2", "matplotlib>=3.8,<4"]
 extraction = ["transformers>=5.16,<5.18", "tokenizers>=0.22,<1", "safetensors>=0.6,<1", "sentencepiece>=0.2,<1", "pandas>=2.2,<4", "pyarrow>=18,<26"]
@@ -30,3 +31,11 @@ aft8-compare-runs = "aft8.compare_runs:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = ["src/**/*.py", "tests/**/*.py", "scripts/**/*.py", "pyproject.toml"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

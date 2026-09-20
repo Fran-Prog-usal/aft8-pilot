@@ -1,4 +1,5 @@
 """Propiedades matemáticas de las métricas predictivas."""
+
 from __future__ import annotations
 
 import math
@@ -12,7 +13,7 @@ from aft8.metrics import (
     delta_p_series,
     entropy_norm,
     entropy_series,
-    reconstruye_probabilidades,
+    reconstruct_probabilities,
     surprisal_series,
     topk_logits,
 )
@@ -50,7 +51,7 @@ class PredictiveMetricTests(unittest.TestCase):
             self.assertLessEqual(forward, math.log(2) + 1e-6)
 
     def test_entropy_uniform_and_point_mass(self):
-        values = entropy_series(logits_of([[0.25]*4, [1.0, 0.0, 0.0, 0.0]]))
+        values = entropy_series(logits_of([[0.25] * 4, [1.0, 0.0, 0.0, 0.0]]))
         np.testing.assert_allclose(values, [math.log(4), 0.0], atol=1e-6)
         np.testing.assert_allclose(entropy_norm(values, 4), [1.0, 0.0], atol=1e-6)
 
@@ -69,9 +70,11 @@ class PredictiveMetricTests(unittest.TestCase):
     def test_chunking_preserves_predictive_metrics(self):
         logits = torch.randn(9, 31, generator=torch.Generator().manual_seed(29))
         ids = torch.arange(9)
-        for fn, args in [(delta_p_series, (logits,)),
-                         (entropy_series, (logits,)),
-                         (surprisal_series, (logits, ids))]:
+        for fn, args in [
+            (delta_p_series, (logits,)),
+            (entropy_series, (logits,)),
+            (surprisal_series, (logits, ids)),
+        ]:
             np.testing.assert_array_equal(fn(*args, chunk=1), fn(*args, chunk=4))
 
     def test_single_token_has_no_transition(self):
@@ -83,20 +86,21 @@ class PredictiveMetricTests(unittest.TestCase):
     def test_topk_probabilities_match_full_distribution(self):
         logits = torch.randn(5, 17, generator=torch.Generator().manual_seed(41))
         stored = topk_logits(logits, torch.arange(5), k=4)
-        restored = reconstruye_probabilidades(
-            stored['logits_topk_idx'], stored['logits_topk_val'],
-            stored['logits_logsumexp'])
-        expected = np.take_along_axis(torch.softmax(logits, -1).numpy(),
-                                      stored['logits_topk_idx'], axis=1)
+        restored = reconstruct_probabilities(
+            stored["logits_topk_idx"], stored["logits_topk_val"], stored["logits_logsumexp"]
+        )
+        expected = np.take_along_axis(
+            torch.softmax(logits, -1).numpy(), stored["logits_topk_idx"], axis=1
+        )
         np.testing.assert_allclose(restored, expected, rtol=1e-5, atol=1e-7)
         self.assertTrue(np.all(restored.sum(axis=1) < 1))
 
     def test_topk_caps_width_and_preserves_observed_rank(self):
-        logits = torch.tensor([[2., 1., 0.], [0., 1., 2.], [1., 1., 0.]])
+        logits = torch.tensor([[2.0, 1.0, 0.0], [0.0, 1.0, 2.0], [1.0, 1.0, 0.0]])
         stored = topk_logits(logits, torch.tensor([0, 2, 2]), k=50)
-        self.assertEqual(stored['logits_topk_idx'].shape, (3, 3))
-        np.testing.assert_array_equal(stored['observed_rank'], [-1, 2, 0])
+        self.assertEqual(stored["logits_topk_idx"].shape, (3, 3))
+        np.testing.assert_array_equal(stored["observed_rank"], [-1, 2, 0])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -1,4 +1,5 @@
 """Contrastes descriptivos y exploratorios con unidades y familias explícitas."""
+
 from __future__ import annotations
 
 import numpy as np
@@ -6,8 +7,11 @@ import pandas as pd
 from scipy.stats import binomtest, rankdata
 
 FAMILY_TARGETS = {
-    "P1": ("delta_p",), "P2": ("delta_e",), "P3": ("gxa",),
-    "P4": ("delta_p", "delta_e"), "P5": ("delta_p", "delta_e", "gxa"),
+    "P1": ("delta_p",),
+    "P2": ("delta_e",),
+    "P3": ("gxa",),
+    "P4": ("delta_p", "delta_e"),
+    "P5": ("delta_p", "delta_e", "gxa"),
 }
 METRICS = ("delta_p", "delta_e", "gxa")
 VERSE_SET = (2, 3, 4, 5, 6)
@@ -42,10 +46,19 @@ def score_peaks(verses, column):
             raise ValueError(f"Objetivo no válido: {identifier}")
         target = int(expected[0])
         winner = VERSE_SET[int(np.argmax(values))]
-        rows.append({"record_id": identifier, "design_family": frame.design_family.iloc[0],
-                     "expected_verse": target, "argmax_verse": winner,
-                     "hit": int(winner == target), "max_ties": int(np.sum(values == values.max())),
-                     "rank_of_expected": float(rankdata(-values, method="average")[VERSE_SET.index(target)])})
+        rows.append(
+            {
+                "record_id": identifier,
+                "design_family": frame.design_family.iloc[0],
+                "expected_verse": target,
+                "argmax_verse": winner,
+                "hit": int(winner == target),
+                "max_ties": int(np.sum(values == values.max())),
+                "rank_of_expected": float(
+                    rankdata(-values, method="average")[VERSE_SET.index(target)]
+                ),
+            }
+        )
     return pd.DataFrame(rows)
 
 
@@ -54,9 +67,17 @@ def nominal_summary(table):
     rows = []
     for (family, metric), group in table.groupby(["design_family", "metric"], sort=True):
         n, hits = len(group), int(group.hit.sum())
-        rows.append({"design_family": family, "metric": metric, "n_texts": n, "hits": hits,
-                     "hit_rate": hits / n, "p0_uniform_reference": .2,
-                     "p_raw": binomtest(hits, n, .2, alternative="greater").pvalue})
+        rows.append(
+            {
+                "design_family": family,
+                "metric": metric,
+                "n_texts": n,
+                "hits": hits,
+                "hit_rate": hits / n,
+                "p0_uniform_reference": 0.2,
+                "p_raw": binomtest(hits, n, 0.2, alternative="greater").pvalue,
+            }
+        )
     result = pd.DataFrame(rows)
     result["p_bh"] = fdr_bh(result.p_raw)
     result["correction_family"] = "eight_family_metric_tests_within_mode"
@@ -67,16 +88,29 @@ def paired_comparison(metric_scores, baseline_scores):
     """McNemar exacto bilateral sobre textos emparejados; nunca sobre tasas globales distintas."""
     if metric_scores.record_id.duplicated().any() or baseline_scores.record_id.duplicated().any():
         raise ValueError("Identificadores duplicados en la comparación.")
-    paired = metric_scores.merge(baseline_scores, on="record_id", suffixes=("_metric", "_baseline"),
-                                 how="left", validate="one_to_one")
-    if paired.hit_baseline.isna().any() or not (paired.expected_verse_metric == paired.expected_verse_baseline).all():
+    paired = metric_scores.merge(
+        baseline_scores,
+        on="record_id",
+        suffixes=("_metric", "_baseline"),
+        how="left",
+        validate="one_to_one",
+    )
+    if (
+        paired.hit_baseline.isna().any()
+        or not (paired.expected_verse_metric == paired.expected_verse_baseline).all()
+    ):
         raise ValueError("Faltan pares o los objetivos son diferentes.")
     a, b = paired.hit_metric.to_numpy(), paired.hit_baseline.to_numpy()
     wins, losses = int(((a == 1) & (b == 0)).sum()), int(((a == 0) & (b == 1)).sum())
-    return {"n_texts": len(paired), "metric_hits": int(a.sum()), "baseline_hits": int(b.sum()),
-            "metric_only": wins, "baseline_only": losses,
-            "hit_rate_difference": float(np.mean(a - b)),
-            "p_raw": binomtest(wins, wins + losses, .5).pvalue if wins + losses else 1.0}
+    return {
+        "n_texts": len(paired),
+        "metric_hits": int(a.sum()),
+        "baseline_hits": int(b.sum()),
+        "metric_only": wins,
+        "baseline_only": losses,
+        "hit_rate_difference": float(np.mean(a - b)),
+        "p_raw": binomtest(wins, wins + losses, 0.5).pvalue if wins + losses else 1.0,
+    }
 
 
 def conditional_permutation(table, n_permutations=20000, seed=0, stratify_family=False):
@@ -89,7 +123,8 @@ def conditional_permutation(table, n_permutations=20000, seed=0, stratify_family
     if n_permutations < 1:
         raise ValueError("Se requiere al menos una permutación.")
     meta = table.groupby("record_id", sort=True).agg(
-        expected_verse=("expected_verse", "first"), design_family=("design_family", "first"))
+        expected_verse=("expected_verse", "first"), design_family=("design_family", "first")
+    )
     for column in ("expected_verse", "design_family"):
         if (table.groupby("record_id")[column].nunique() != 1).any():
             raise ValueError("Metadatos inconsistentes dentro de un texto.")
@@ -99,9 +134,14 @@ def conditional_permutation(table, n_permutations=20000, seed=0, stratify_family
     peaks = table.argmax_verse.to_numpy()
     masks = {"all": np.ones(len(table), dtype=bool)}
     masks.update({metric: table.metric.to_numpy() == metric for metric in METRICS})
-    blocks = ([np.flatnonzero(meta.design_family.to_numpy() == family)
-               for family in sorted(meta.design_family.unique())] if stratify_family
-              else [np.arange(len(meta))])
+    blocks = (
+        [
+            np.flatnonzero(meta.design_family.to_numpy() == family)
+            for family in sorted(meta.design_family.unique())
+        ]
+        if stratify_family
+        else [np.arange(len(meta))]
+    )
     rng = np.random.default_rng(seed)
     samples = np.empty((n_permutations, len(masks)))
     for i in range(n_permutations):
@@ -115,13 +155,20 @@ def conditional_permutation(table, n_permutations=20000, seed=0, stratify_family
     for j, (scope, mask) in enumerate(masks.items()):
         observed = float(table.loc[mask, "hit"].mean())
         samples_column = samples[:, j]
-        rows.append({"scope": scope, "n_score_rows": int(mask.sum()),
-                     "n_texts": int(table.loc[mask, "record_id"].nunique()),
-                     "hit_rate": observed, "null_mean": float(samples_column.mean()),
-                     "null_p95": float(np.quantile(samples_column, .95)),
-                     "p_raw": (1 + int((samples_column >= observed).sum())) / (n_permutations + 1),
-                     "n_permutations": n_permutations, "seed": seed,
-                     "scheme": "within_family" if stratify_family else "all_texts"})
+        rows.append(
+            {
+                "scope": scope,
+                "n_score_rows": int(mask.sum()),
+                "n_texts": int(table.loc[mask, "record_id"].nunique()),
+                "hit_rate": observed,
+                "null_mean": float(samples_column.mean()),
+                "null_p95": float(np.quantile(samples_column, 0.95)),
+                "p_raw": (1 + int((samples_column >= observed).sum())) / (n_permutations + 1),
+                "n_permutations": n_permutations,
+                "seed": seed,
+                "scheme": "within_family" if stratify_family else "all_texts",
+            }
+        )
     result = pd.DataFrame(rows)
     result["p_bh"] = fdr_bh(result.p_raw)
     result["correction_family"] = "four_scopes_within_mode_and_permutation_scheme"
@@ -135,7 +182,12 @@ def document_bootstrap(values, n_resamples=10000, seed=0):
         raise ValueError("Se requieren al menos dos documentos finitos.")
     rng = np.random.default_rng(seed)
     means = x[rng.integers(0, len(x), size=(n_resamples, len(x)))].mean(axis=1)
-    lower, upper = np.quantile(means, [.025, .975])
-    return {"n_documents": len(x), "mean_document_weighted": float(x.mean()),
-            "ci95_low": float(lower), "ci95_high": float(upper),
-            "n_resamples": n_resamples, "seed": seed}
+    lower, upper = np.quantile(means, [0.025, 0.975])
+    return {
+        "n_documents": len(x),
+        "mean_document_weighted": float(x.mean()),
+        "ci95_low": float(lower),
+        "ci95_high": float(upper),
+        "n_resamples": n_resamples,
+        "seed": seed,
+    }

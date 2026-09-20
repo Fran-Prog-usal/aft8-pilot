@@ -14,7 +14,7 @@ Los tiempos son los registrados por el extractor; no representan toda la duraci�
 
 Los hashes de entrada coinciden con la proyección sin hipótesis del corpus autorizado y sus controles. El Excel fuente tiene SHA-256 `7dc1af0a69226ee03d92d8eb7a930f53f7fcc67f6ec956ebea10e11e87f6816c`. Se han comprobado los IDs previstos, cobertura textual, agregaciones por verso y decode, IDs y offsets con el tokenizador auténtico: 92 registros contando el smoke, sin incidencias. Todos los campos NPZ de vectores se leen sin pickle.
 
-Los hashes de código del manifiesto coinciden con los archivos locales usados para la auditoría. Frente al ZIP de preparación existen diferencias de finales de línea y líneas vacías al final de algunos archivos. Se comprobó igualdad del texto tras normalizar exclusivamente esos elementos y del árbol sintáctico completo de los 22 módulos; no se afirma identidad binaria del código del ZIP.
+Los hashes de código del manifiesto coinciden con los archivos usados para la auditoría, conservados en `executed-source.zip` en la release. El código revisado del repositorio se verifica por separado y tiene otros hashes. Frente al ZIP de preparación existían diferencias de finales de línea y líneas vacías al final de algunos archivos. Se comprobó igualdad del texto tras normalizar exclusivamente esos elementos y del árbol sintáctico completo de los 22 módulos; no se afirma identidad binaria del código del ZIP de preparación.
 
 ## Comparación numérica y análisis
 
@@ -44,4 +44,4 @@ Los comandos de validación recalculan agregaciones y offsets; la auditoría de 
 - C02/D04: selección de soporte GxA. Se mantienen ambas variantes sin atribuir aprobación metodológica.
 - Smoke histórico A001/A002 frente a A001/A013: se conserva abierto y documentado; la ejecución nueva aporta el smoke solicitado sin alterar el archivo de referencia.
 - Anotaciones exploratorias A004/A016/A020 y tratamiento del clustering en la memoria.
-- Distribución de los artefactos, entorno de análisis fijado y comprobación desde una instalación nueva. La extracción recibida no completa por sí sola estos requisitos de publicación.
+- La distribución y la instalación nueva se documentan en [la revisión técnica](revision_tecnica.md), sin convertir estas comprobaciones en cierre metodológico.

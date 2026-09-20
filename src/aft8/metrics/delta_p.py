@@ -4,13 +4,15 @@
 logaritmos naturales. Su rango teórico es [0, ln(2)]. El primer token carece
 de distribución anterior y se representa mediante NaN.
 """
+
 from __future__ import annotations
 
 import numpy as np
 import torch
 
 EPS = 1e-12
-TECHO_NATS = float(np.log(2.0))
+CEILING_NATS = float(np.log(2.0))
+TECHO_NATS = CEILING_NATS  # Compatibilidad con la API inicial.
 
 
 def js_divergence(p: torch.Tensor, q: torch.Tensor) -> torch.Tensor:
@@ -33,6 +35,6 @@ def delta_p_series(logits: torch.Tensor, chunk: int = 32) -> np.ndarray:
     for start in range(1, T, chunk):
         end = min(start + chunk, T)
         cur = torch.softmax(logits[start:end].float(), dim=-1)
-        prv = torch.softmax(logits[start - 1:end - 1].float(), dim=-1)
+        prv = torch.softmax(logits[start - 1 : end - 1].float(), dim=-1)
         out[start:end] = js_divergence(prv, cur).double().cpu().numpy()
     return out

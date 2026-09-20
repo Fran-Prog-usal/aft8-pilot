@@ -3,7 +3,7 @@
 from .delta_e import delta_e_series, entropy_norm, entropy_series
 from .delta_p import delta_p_series, js_divergence
 from .surprisal import surprisal_series
-from .topk import reconstruye_probabilidades, topk_logits
+from .topk import reconstruct_probabilities, reconstruye_probabilidades, topk_logits
 
 __all__ = [
     "delta_e_series",
@@ -12,6 +12,7 @@ __all__ = [
     "entropy_series",
     "js_divergence",
     "reconstruye_probabilidades",
+    "reconstruct_probabilities",
     "surprisal_series",
     "topk_logits",
 ]

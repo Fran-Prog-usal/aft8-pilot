@@ -1,15 +1,18 @@
 # Acceso y validación de resultados
 
-El paquete de referencia contiene resultados de Mistral-7B-v0.3: treinta originales, sesenta controles y dos textos de smoke. Su SHA-256 es `2656d5c571da2a86102537ccf0a07301234367d1efb69134e9d668769c32418c`. El inventario por archivo está en `config/result_inventory.json`.
+El paquete vigente contiene resultados de Mistral-7B-v0.3: treinta originales, sesenta controles y el smoke A001/A013. Su SHA-256 es `1b8cdbe8ed7b83815fc61751ed6446266ffe3989e463604da76a3130e226087b`. Es el paquete esperado por defecto por los comandos de lectura, validación y análisis.
 
-El archivo se distribuirá como artefacto adjunto a una release del repositorio privado, con nombre `results-mistral.tar.gz` y su hash. Esta distribución aún está pendiente de publicación. El nombre del contenedor puede cambiar sin alterar sus bytes. Los manifiestos internos originales se conservan para documentar la procedencia; los resultados de análisis corregidos se guardarán por separado.
+Descargar los archivos de la [release de reproducción](https://github.com/Fran-Prog-usal/aft8-pilot/releases/tag/v0.1.1-reproducible) en `data/raw/`: paquete, Excel autorizado, código ejecutado y evidencia de análisis. `config/release_assets.json` identifica sus hashes y tamaños. `SHA256SUMS.txt` permite comprobarlos también con `sha256sum -c SHA256SUMS.txt` desde esa carpeta. Los manifiestos internos originales se conservan sin modificaciones.
+
+El paquete histórico de referencia tiene SHA-256 `2656d5c571da2a86102537ccf0a07301234367d1efb69134e9d668769c32418c`; `config/result_inventory.json` corresponde exclusivamente a ese paquete. Para leerlo se debe indicar ese hash mediante `--archive-sha256`. No se intercambian sus nombres, inventarios ni smoke con los del paquete vigente.
 
 ## Ejecución local
 
 Tras disponer del libro autorizado y del paquete, ejecutar desde la raíz del repositorio:
 
 ```bash
-python -m pip install -e ".[data,analysis]"
+python -m pip install -r requirements/analysis-windows.lock.txt
+python -m pip install --no-deps -e .
 aft8-import-corpus data/raw/AFT8_Pilot30_Results_Template_v1_0_Student_Edition.xlsx data/processed/pilot30.jsonl
 aft8-build-controls data/processed/pilot30.jsonl config/control_design.json data/processed/controls.jsonl
 aft8-validate-results data/raw/results-mistral.tar.gz data/processed/pilot30.jsonl --run original --output outputs/validation/original.json
@@ -37,4 +40,4 @@ Se distinguen los pares de transferencia de la salida archivada (`config/gxa_tra
 
 La salida archivada contiene siete pares, de los que cinco pudieron calcularse: `cuerpo` y `monitor` no aparecen literalmente en A004 y A016. La propuesta utiliza `corazón` y `pantalla`, respectivamente. En A004 deben conservarse también las alternativas `pecho` y `mano`. Estas decisiones siguen pendientes de confirmación; importar las anotaciones no las valida.
 
-El siguiente análisis deberá presentar mapas y resumen de los treinta textos, separando los doce con hipótesis GxA explícita. Debe incluir distribución, máximos, percentil objetivo con su referencia nula correcta, masa objetivo frente al resto y transferencias origen–destino con ventanas y controles definidos. Las cifras archivadas 5/5 no se mezclarán con resultados recalculados con otras anotaciones y controles.
+El análisis presenta mapas y resumen de los treinta textos, separando los doce con hipótesis GxA explícita. Incluye distribución, máximos, percentil objetivo con su referencia nula, masa objetivo frente al resto y transferencias origen–destino con ventanas y controles definidos. Las cifras archivadas 5/5 no se mezclan con resultados recalculados con otras anotaciones y controles. El recorrido completo se ejecuta con `python scripts/reproduce.py`; véase el README para instalar el entorno comprobado.

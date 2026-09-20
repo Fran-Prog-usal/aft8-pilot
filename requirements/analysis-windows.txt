@@ -1,0 +1,12 @@
+# Versiones directas del análisis verificado en Windows y Python 3.11.
+# El entorno CUDA de extracción se describe por separado en runpod.txt.
+numpy==2.4.6
+pandas==3.0.5
+pyarrow==25.0.1
+scipy==1.17.1
+scikit-learn==1.9.0
+matplotlib==3.11.1
+openpyxl==3.1.5
+torch==2.14.0
+transformers==5.16.1
+ruff==0.16.8

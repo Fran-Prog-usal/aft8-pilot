@@ -1,7 +1,7 @@
 import copy
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 from aft8.controls import build_controls
 
@@ -14,10 +14,15 @@ class ControlTests(unittest.TestCase):
         for item in self.design:
             if item["variant"] == "D1":
                 original_target = item["permutation"][item["expected_verse"] - 1]
-                self.corpus.append({"record_id": item["source_record_id"],
-                                    "text_content": "uno\ndos\ntres\ncuatro\ncinco\nseis",
-                                    "expected_transition_span": f"v.{original_target}",
-                                    "design_family": "P1", "target_dimensions": "ΔP"})
+                self.corpus.append(
+                    {
+                        "record_id": item["source_record_id"],
+                        "text_content": "uno\ndos\ntres\ncuatro\ncinco\nseis",
+                        "expected_transition_span": f"v.{original_target}",
+                        "design_family": "P1",
+                        "target_dimensions": "ΔP",
+                    }
+                )
 
     def test_saved_design_preserves_all_verses_and_target_content(self):
         records = build_controls(self.corpus, self.design)
@@ -27,7 +32,10 @@ class ControlTests(unittest.TestCase):
             actual = record["text_content"].split("\n")
             self.assertCountEqual(actual, verses)
             if record["variant"] == "D1":
-                self.assertEqual(actual[record["expected_verse"] - 1], verses[record["original_expected_verse"] - 1])
+                self.assertEqual(
+                    actual[record["expected_verse"] - 1],
+                    verses[record["original_expected_verse"] - 1],
+                )
             else:
                 self.assertTrue(all(a != b for a, b in zip(actual, verses)))
                 self.assertIsNone(record["expected_verse"])

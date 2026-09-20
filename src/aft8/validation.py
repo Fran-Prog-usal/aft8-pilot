@@ -1,4 +1,5 @@
 """Comprobaciones independientes de alineación y agregaciones de resultados."""
+
 from __future__ import annotations
 
 import argparse
@@ -8,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .results import ResultArchive, ARCHIVE_SHA256
+from .results import ARCHIVE_SHA256, ResultArchive
 
 
 def check_offsets(text: str, tokens: pd.DataFrame) -> dict:
@@ -19,8 +20,7 @@ def check_offsets(text: str, tokens: pd.DataFrame) -> dict:
     a tokenizar y decodificar con el tokenizer del modelo.
     """
     starts = np.cumsum([0] + [len(line) + 1 for line in text.split("\n")[:-1]])
-    spans = [(int(start), int(start) + len(line))
-             for start, line in zip(starts, text.split("\n"))]
+    spans = [(int(start), int(start) + len(line)) for start, line in zip(starts, text.split("\n"))]
     covered = np.zeros(len(text), dtype=bool)
     errors = []
     previous = 1
@@ -49,8 +49,12 @@ def check_offsets(text: str, tokens: pd.DataFrame) -> dict:
     nonspace = [i for i in missing if not text[i].isspace()]
     if nonspace:
         errors.append("caracteres no blancos sin cobertura")
-    return {"errors": errors, "uncovered_characters": len(missing),
-            "uncovered_nonspace": len(nonspace), "literal_offset_coverage": not missing}
+    return {
+        "errors": errors,
+        "uncovered_characters": len(missing),
+        "uncovered_nonspace": len(nonspace),
+        "literal_offset_coverage": not missing,
+    }
 
 
 def aggregate_lines(tokens: pd.DataFrame, salience: np.ndarray) -> pd.DataFrame:
@@ -68,8 +72,10 @@ def aggregate_lines(tokens: pd.DataFrame, salience: np.ndarray) -> pd.DataFrame:
     for line, frame in tokens[~tokens.is_special].groupby("line_id", sort=True):
         record = {"line_id": int(line), "n_tokens": len(frame)}
         for column, source, operation in (
-            ("deltaP_max", "delta_P", "max"), ("deltaP_mean", "delta_P", "mean"),
-            ("deltaE_mean", "delta_E", "mean"), ("deltaE_sum", "delta_E", "sum"),
+            ("deltaP_max", "delta_P", "max"),
+            ("deltaP_mean", "delta_P", "mean"),
+            ("deltaE_mean", "delta_E", "mean"),
+            ("deltaE_sum", "delta_E", "sum"),
             ("deltaE_absmax", "delta_E", "absmax"),
             ("gxa_redistribution_max", "gxa_redistribution", "max"),
             ("gxa_redist_pad_max", "gxa_redist_pad", "max"),
@@ -79,8 +85,15 @@ def aggregate_lines(tokens: pd.DataFrame, salience: np.ndarray) -> pd.DataFrame:
             if np.isinf(values).any():
                 raise ValueError(f"Valor infinito en {source}.")
             values = values[np.isfinite(values)]
-            record[column] = (float(np.max(np.abs(values))) if operation == "absmax"
-                              else float(getattr(np, operation)(values))) if len(values) else np.nan
+            record[column] = (
+                (
+                    float(np.max(np.abs(values)))
+                    if operation == "absmax"
+                    else float(getattr(np, operation)(values))
+                )
+                if len(values)
+                else np.nan
+            )
         selected = salience[np.ix_(valid_queries, line_ids == line)]
         record["gxa_mass_received"] = float(np.nansum(selected) / max(1, valid_queries.sum()))
         rows.append(record)
@@ -95,7 +108,10 @@ def validate_run(archive: ResultArchive, run: str, corpus: dict[str, dict]) -> d
         errors.append("Recuentos distintos del manifiesto")
     if manifest["model_config"]["hf_id"] != "mistralai/Mistral-7B-v0.3":
         errors.append("Modelo distinto de Mistral-7B-v0.3")
-    if tokens.duplicated(["record_id", "token_idx"]).any() or lines.duplicated(["record_id", "line_id"]).any():
+    if (
+        tokens.duplicated(["record_id", "token_idx"]).any()
+        or lines.duplicated(["record_id", "line_id"]).any()
+    ):
         errors.append("Claves duplicadas")
     if set(tokens.record_id) != set(lines.record_id):
         errors.append("Identificadores distintos entre tablas")
@@ -124,12 +140,19 @@ def validate_run(archive: ResultArchive, run: str, corpus: dict[str, dict]) -> d
                 differences[column] = float(np.nanmax(np.abs(left - right)))
         if offset["errors"] or differences:
             errors.append(identifier + ": discrepancias de offsets o agregaciones")
-        details.append({"record_id": identifier, "offsets": offset,
-                        "aggregation_differences": differences})
-    return {"run": run, "texts": len(details), "errors": errors, "records": details,
-            "rtol": 1e-6, "atol": 1e-8,
-            "tokenizer_decode_verified": False,
-            "open_issues": ["GxA: alineación de soportes", "Smoke: A001/A002 frente a A001/A013"]}
+        details.append(
+            {"record_id": identifier, "offsets": offset, "aggregation_differences": differences}
+        )
+    return {
+        "run": run,
+        "texts": len(details),
+        "errors": errors,
+        "records": details,
+        "rtol": 1e-6,
+        "atol": 1e-8,
+        "tokenizer_decode_verified": False,
+        "open_issues": ["GxA: alineación de soportes", "Smoke: A001/A002 frente a A001/A013"],
+    }
 
 
 def main():
@@ -148,7 +171,9 @@ def main():
         report = validate_run(archive, args.run, corpus)
         report["archive_sha256"] = archive.sha256
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    args.output.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     print(f"{report['texts']} textos; {len(report['errors'])} incidencias.")
     raise SystemExit(bool(report["errors"]))
 
