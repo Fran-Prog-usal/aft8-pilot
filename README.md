@@ -1,5 +1,17 @@
 # AImotional Field Theory AFT8-15
 
+## Entrega del TFM
+
+Autor: **Francisco Jose Martinez Fernandez**.
+
+- [Memoria en PDF](memoria/Francisco_Jose_Martinez_Fernandez_TFM_AFT8_15.pdf).
+- [Vídeo con voz en off en MP4](presentacion/Francisco_Jose_Martinez_Fernandez_Diapositivas_AFT8_15.mp4) (3 min 41 s, 33,1 MB).
+- [Presentación editable](presentacion/Francisco_Jose_Martinez_Fernandez_Diapositivas_AFT8_15.pptx).
+- [Anexos y correspondencia con los resultados](memoria/ANEXOS.md).
+- [Código fuente](src/aft8/) y [artefactos de reproducción](https://github.com/Fran-Prog-usal/aft8-pilot/releases/tag/v0.1.1-reproducible).
+
+El repositorio es público. Los paquetes de datos y resultados se encuentran en los archivos adjuntos de la release enlazada.
+
 Código para estudiar cambios en las distribuciones predictivas y en la saliencia de un modelo de lenguaje durante la lectura de textos mediante teacher forcing.
 
 El alcance científico es un estudio instrumental de tres dimensiones de AFT8 sobre Mistral-7B-v0.3. Los resultados deberán interpretarse respecto al corpus y a los procedimientos evaluados; el piloto no constituye una validación de AFT8 completo.
